@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-#SBATCH --partition=p_ch977_1,nonpre,p_am2820_1,p_ak1833_1,genetics_1,main
+#SBATCH --partition=main
 #SBATCH --job-name=rseqpl
 #SBATCH --array=1-54%12            # 54 tasks total, max 12 running concurrently
 #SBATCH --requeue
