@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-#SBATCH --partition=p_ch977_1,nonpre,p_am2820_1,p_ak1833_1,main
+#SBATCH --partition=main
 #SBATCH --job-name=ribodet
 #SBATCH --array=1-54%18            # 54 tasks total, max 18 running concurrently
 #SBATCH --requeue
