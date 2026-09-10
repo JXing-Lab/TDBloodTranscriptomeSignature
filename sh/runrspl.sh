@@ -31,10 +31,10 @@
 export SAMPLE="$1"
 
 # --- Path configuration -----------------------------------------------------
-export DATADIR="/scratch/ks1437/RNASeq/"
-export GENOMEDIR="/projectsp/f_jx76_1/DataSets/rsem/"
+export DATADIR="./RNASeq/"
+export GENOMEDIR="./rsem/"
 export RSEMREF="${GENOMEDIR}/T2T"
-export WORKDIR="/home/ks1437/jgd/TSP3/RNASeq/out/"
+export WORKDIR="./RNASeq/out/"
 export OUTDIR="${WORKDIR}/${SAMPLE}/"
 
 ###############################################################################

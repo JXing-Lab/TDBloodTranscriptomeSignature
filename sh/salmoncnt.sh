@@ -29,11 +29,11 @@
 module load salmon
 
 # --- Path configuration -----------------------------------------------------
-WORKDIR='/scratch/ks1437/rnaseqout'
-DATADIR='/scratch/ks1437/RNASeq'
+WORKDIR='./rnaseqout'
+DATADIR='./RNASeq'
 
-INDEXDIR='/projectsp/f_jx76_1/DataSets/salmon/hg38_idx'          # pre-built Salmon index
-GTFFILE='/projectsp/f_jx76_1/DataSets/salmon/gencode.v38.annotation.gtf'  # hg38 gene annotation (for --geneMap)
+INDEXDIR='./salmon/hg38_idx'          # pre-built Salmon index
+GTFFILE='./salmon/gencode.v38.annotation.gtf'  # hg38 gene annotation (for --geneMap)
 
 # --- Input argument ----------------------------------------------------------
 SAMPLE="$1"

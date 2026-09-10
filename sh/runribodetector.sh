@@ -26,14 +26,16 @@
 #
 # Log:
 #   ${LOGDIR}/<SAMPLE>.rdet.log
+#
+# NOTE: Ribodetecor log files have count of ribosomal RNA and non-ribosomal RNA reads.  # These counts have to be used to create a TSV file for rRNA filtering quality check
 ###############################################################################
 
 set -euo pipefail
 
 # --- Path configuration -----------------------------------------------------
-DATADIR=/scratch/ks1437/tsdata     # location of raw input FASTQ files
-OUTDIR=/scratch/ks1437/tsout       # location for filtered FASTQ output
-LOGDIR=/scratch/ks1437/tslog       # location for ribodetector log files
+DATADIR=./tsdata     # location of raw input FASTQ files
+OUTDIR=./tsout       # location for filtered FASTQ output
+LOGDIR=./tslog       # location for ribodetector log files
 
 # --- Input argument ----------------------------------------------------------
 SMPL="$1"   # sample name, used to build input/output file paths

@@ -10,7 +10,7 @@
 #SBATCH -e %j.err                  # stderr: <SLURM_JOB_ID>.err
 #SBATCH --export=ALL               # forward current environment to compute nodes
 #SBATCH --mail-type=ALL
-#SBATCH --mail-user=ks1437@rutgers.edu
+#SBATCH --mail-user=user@anywhere.edu
 ###############################################################################
 # runarray_rspl.sh
 #
@@ -21,26 +21,26 @@
 #
 #   Like runarray_ribodet.sh, this script does NOT call runrspl.sh directly.
 #   It expects a set of pre-generated per-task shell scripts named
-#   x1, x2, ... x54 in /scratch/ks1437/work (one per SLURM array index),
+#   x1, x2, ... x54 in ./work (one per SLURM array index),
 #   each of which invokes `runrspl.sh <SAMPLE>` (or equivalent) for a single
 #   sample. This "array of scripts" pattern lets many independent, heavier
 #   pipeline runs be queued as one SLURM array job while limiting how many
 #   run concurrently (here, 12 at a time via the %12 throttle).
 #
 #   Array index -> input script mapping:
-#     SLURM_ARRAY_TASK_ID = 1  -->  /scratch/ks1437/work/x1
-#     SLURM_ARRAY_TASK_ID = 2  -->  /scratch/ks1437/work/x2
+#     SLURM_ARRAY_TASK_ID = 1  -->  ./work/x1
+#     SLURM_ARRAY_TASK_ID = 2  -->  ./work/x2
 #     ...                            ...
-#     SLURM_ARRAY_TASK_ID = 54 -->  /scratch/ks1437/work/x54
+#     SLURM_ARRAY_TASK_ID = 54 -->  ./work/x54
 #
 # Usage:
-#   1. Generate /scratch/ks1437/work/x1 .. x54, one per sample (run AFTER
+#   1. Generate ./work/x1 .. x54, one per sample (run AFTER
 #      ribodetector filtering has completed for all samples).
 #   2. Submit with: sbatch runarray_rspl.sh
 #
 # Output:
 #   Each task gets its own working directory:
-#     /scratch/ks1437/work/<JOBID>/<ARRAY_TASK_ID>/
+#     ./work/<JOBID>/<ARRAY_TASK_ID>/
 #   containing <ARRAY_TASK_ID>.output (stdout of the per-task script) plus
 #   the standard SLURM %j.out / %j.err files.
 #
@@ -64,13 +64,13 @@ echo "SLURM JOB ID                   = $SLURM_JOB_ID"
 echo "SLURM ARRAY TASK ID            = $SLURM_ARRAY_TASK_ID"
 
 # --- Set up a per-task scratch working directory ----------------------------
-cd /scratch/ks1437/work
-mkdir -p "/scratch/ks1437/work/${SLURM_JOB_ID}/${SLURM_ARRAY_TASK_ID}"
-cd "/scratch/ks1437/work/${SLURM_JOB_ID}/${SLURM_ARRAY_TASK_ID}"
+cd ./work
+mkdir -p "./work/${SLURM_JOB_ID}/${SLURM_ARRAY_TASK_ID}"
+cd "./work/${SLURM_JOB_ID}/${SLURM_ARRAY_TASK_ID}"
 
 # --- Run this array task's per-sample command file --------------------------
-# Reads and executes /scratch/ks1437/work/x<ARRAY_TASK_ID> as a bash script,
+# Reads and executes ./work/x<ARRAY_TASK_ID> as a bash script,
 # redirecting its stdout to <ARRAY_TASK_ID>.output in the per-task directory.
-srun /usr/bin/bash < "/scratch/ks1437/work/x${SLURM_ARRAY_TASK_ID}" > "${SLURM_ARRAY_TASK_ID}.output"
+srun /usr/bin/bash < "./work/x${SLURM_ARRAY_TASK_ID}" > "${SLURM_ARRAY_TASK_ID}.output"
 
 echo "End Date/Time              = $(date)"

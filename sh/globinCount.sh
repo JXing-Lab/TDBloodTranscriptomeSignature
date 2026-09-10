@@ -20,7 +20,7 @@
 #   (Optionally redirect to a file: ./globinCount.sh > globin_counts.tsv)
 #
 # Requirements:
-#   - The gene list file must exist at: /home/ks1437/globinGenes
+#   - The gene list file must exist at: ./globinGenes
 #     (one gene symbol per line; see globinGenes in this folder). Update this
 #     hardcoded path if the gene list is moved or this script is run by a
 #     different user.
@@ -42,4 +42,4 @@ set -euo pipefail
 #                 inside a longer identifier)
 # -f <file>     : read match patterns (gene symbols) from the given file
 find . -name counts.genes.results \
-    -exec grep -H -Fwf /home/ks1437/globinGenes {} \;
+    -exec grep -H -Fwf ./globinGenes {} \;
