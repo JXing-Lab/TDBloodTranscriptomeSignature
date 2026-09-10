@@ -27,7 +27,9 @@
 # Log:
 #   ${LOGDIR}/<SAMPLE>.rdet.log
 #
-# NOTE: Ribodetecor log files have count of ribosomal RNA and non-ribosomal RNA reads.  # These counts have to be used to create a TSV file for rRNA filtering quality check
+# NOTE: Ribodetecor log files have count of ribosomal RNA and non-ribosomal RNA reads.  
+# These counts have to be used to create a TSV file RiboCounts.txt for rRNA filtering quality check
+# RiboCounts.txt should contain the following fields: Sample	rRNA_reads	non_rRNA	rRNA%
 ###############################################################################
 
 set -euo pipefail
