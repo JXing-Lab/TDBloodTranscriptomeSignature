@@ -48,7 +48,7 @@ library(pheatmap)
 library(EnhancedVolcano)
 library(reshape2)
 
-load(file = "./data/calcDEG.Rdata")
+#load(file = "./data/calcDEG.Rdata")
 
 #############################
 ## Global Parameters
