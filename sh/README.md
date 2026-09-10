@@ -89,9 +89,9 @@ cd /path/to/rsem/output/root
   `RSEM/1.3.3-yc759`, `salmon` (loaded automatically within the relevant
   scripts via `module load`).
 - **Reference data:**
-  - T2T genome + STAR index + RSEM reference: `/projectsp/f_jx76_1/DataSets/rsem/`
+  - T2T genome + STAR index + RSEM reference: `./DataSets/rsem/`
     (GTF: `GCF_009914755.1_T2T-CHM13v2.0_genomic.gtf`)
-  - Salmon hg38 index + GENCODE v38 GTF: `/projectsp/f_jx76_1/DataSets/salmon/`
+  - Salmon hg38 index + GENCODE v38 GTF: `./DataSets/salmon/`
   
 ## Notes
 
