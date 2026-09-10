@@ -10,8 +10,9 @@
 #'       Must contain a data frame `df` with (at minimum) the columns:
 #'         Sample        - sample identifier (character/factor)
 #'         Percent_rRNA  - percentage of reads mapping to rRNA (numeric, 0-100)
-#'   - Alternatively, uncomment the block below to read `df` directly from
-#'     ./input/ReRun_Stats.xlsx (sheet "RiboStats") instead of the .Rdata file.
+#'   - Alternatively, read `df` directly from ./input/RiboCounts.txt instead of .Rdata file.
+#'    RiboCounts.txt is a tsv file created using the log file from runribodetector.sh
+#'    containing the following fields: Sample	rRNA_reads	non_rRNA	rRNA%
 #'
 #' Outputs:
 #'   - ./results/01_RiboStats/RiboStats.pdf   Scatter plot of non-rRNA % by sample
@@ -24,7 +25,7 @@
 #' ==============================================================================
 
 library(tidyverse)
-library(xlsx)
+#library(xlsx)
 
 # ------------------------------------------------------------------------------
 # 1. Paths
@@ -44,7 +45,7 @@ dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 # Alternative source: read directly from the raw Excel stats file instead of
 # relying on the cached .Rdata. Uncomment if `df` needs to be regenerated
 # from source (e.g. after a re-run of the pipeline).
-df <- xlsx::read.xlsx(paste0(inp_dir, "ReRun_Stats.xlsx"), sheetName = "RiboStats")
+df <- read_tsv(paste0(inp_dir, "RiboCounts.txt"))
 
 stopifnot(
   "df is missing required columns" =
