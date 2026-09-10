@@ -42,12 +42,13 @@ dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 # ------------------------------------------------------------------------------
 
 # Primary source: previously saved workspace containing `df`.
-load(file = "./data/Globins.Rdata")
+# load(file = "./data/Globins.Rdata")
 
-# Alternative source: read directly from raw RSEM TPM output instead of the
-# cached .Rdata. Uncomment if `df` needs to be regenerated from source
+# Alternative source: read directly from "globin_counts.txt" produced from
+# raw RSEM TPM output using "./globinCount.sh > globin_counts.tsv" instead of 
+# the cached .Rdata. Uncomment if `df` needs to be regenerated from source
 # (e.g. after re-running RSEM on unfiltered RNA-seq data).
-# df <- read_tsv(paste0(inp_dir, "globin_counts.txt"))
+df <- read_tsv(paste0(inp_dir, "globin_counts.txt"))
 
 stopifnot(
   "df is missing required columns" =
