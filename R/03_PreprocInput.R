@@ -54,7 +54,7 @@ library(tidyverse)
 # 1. Paths
 # ------------------------------------------------------------------------------
 
-load(file = "./data/preproc.Rdata")
+#load(file = "./data/preproc.Rdata")
 
 inp_dir <- "./input/"
 out_dir <- "./results/03_PreprocInput/"
